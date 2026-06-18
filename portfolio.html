@@ -5,222 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio — Desenvolvedor de Software</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<link rel="stylesheet" href="styles.css">
 
-  :root {
-    --bg: #ffffff;
-    --bg-secondary: #f6f6f4;
-    --text: #1a1a1a;
-    --text-secondary: #6b6b6b;
-    --text-tertiary: #a0a0a0;
-    --border: rgba(0,0,0,0.1);
-    --border-hover: rgba(0,0,0,0.22);
-    --accent: #1872CC;
-    --accent-light: #E6F1FB;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --mono: 'Courier New', Courier, monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111110;
-      --bg-secondary: #1c1c1a;
-      --text: #f0ede8;
-      --text-secondary: #9a9790;
-      --text-tertiary: #5e5c58;
-      --border: rgba(255,255,255,0.1);
-      --border-hover: rgba(255,255,255,0.22);
-      --accent: #5aaaf5;
-      --accent-light: #0c2035;
-    }
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.6;
-  }
-
-  /* NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2.5rem;
-    border-bottom: 0.5px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 100;
-    backdrop-filter: blur(8px);
-  }
-  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--text-tertiary); text-decoration: none; }
-  .nav-links { display: flex; gap: 2rem; }
-  .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--text); }
-
-  /* SECTIONS */
-  section { padding: 5rem 2.5rem; border-bottom: 0.5px solid var(--border); max-width: 1100px; margin: 0 auto; }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-tertiary);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 2.5rem;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 4rem;
-    border-bottom: 0.5px solid var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    padding-top: 5rem;
-  }
-  .hero-eyebrow { font-family: var(--mono); font-size: 12px; color: var(--text-tertiary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
-  .hero-name { font-size: clamp(38px, 6vw, 68px); font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-  .hero-name span { color: var(--accent); }
-  .hero-desc { font-size: 17px; color: var(--text-secondary); max-width: 520px; line-height: 1.65; margin-bottom: 2rem; }
-  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-
-  /* BUTTONS */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 20px;
-    border-radius: var(--radius-md);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-decoration: none;
-    border: 0.5px solid var(--border-hover);
-    background: transparent;
-    color: var(--text);
-    font-family: inherit;
-  }
-  .btn:hover { background: var(--bg-secondary); }
-  .btn-primary { background: var(--text); color: var(--bg); border-color: transparent; }
-  .btn-primary:hover { opacity: 0.88; }
-
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .about-text { font-size: 16px; line-height: 1.75; color: var(--text-secondary); }
-  .about-text p + p { margin-top: 1rem; }
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .stat-card { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 1.25rem; }
-  .stat-number { font-size: 28px; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 4px; }
-  .stat-label { font-size: 12px; color: var(--text-secondary); }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-  }
-  .skill-item { background: var(--bg); padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 8px; }
-  .skill-top { display: flex; justify-content: space-between; align-items: center; }
-  .skill-name { font-size: 14px; font-weight: 500; }
-  .skill-level { font-family: var(--mono); font-size: 11px; color: var(--text-tertiary); }
-  .skill-bar { height: 2px; background: var(--border); border-radius: 1px; overflow: hidden; }
-  .skill-fill { height: 100%; background: var(--accent); border-radius: 1px; }
-  .skill-category { font-size: 11px; color: var(--text-tertiary); }
-
-  /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-  .project-card {
-    background: var(--bg);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: border-color 0.15s;
-    text-decoration: none;
-    color: inherit;
-  }
-  .project-card:hover { border-color: var(--border-hover); }
-  .project-header { display: flex; justify-content: space-between; align-items: flex-start; }
-  .project-icon {
-    width: 36px; height: 36px;
-    border-radius: var(--radius-md);
-    background: var(--accent-light);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent); font-size: 18px;
-  }
-  .project-status {
-    font-family: var(--mono); font-size: 10px; color: var(--text-tertiary);
-    letter-spacing: 0.06em; background: var(--bg-secondary);
-    padding: 3px 8px; border-radius: 20px;
-  }
-  .project-name { font-size: 16px; font-weight: 500; }
-  .project-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag {
-    font-size: 11px; font-family: var(--mono);
-    background: var(--bg-secondary); color: var(--text-secondary);
-    padding: 3px 8px; border-radius: 20px;
-  }
-
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; }
-  .exp-item {
-    display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
-    padding: 1.5rem 0; border-bottom: 0.5px solid var(--border);
-  }
-  .exp-item:first-child { border-top: 0.5px solid var(--border); }
-  .exp-period { font-family: var(--mono); font-size: 12px; color: var(--text-tertiary); padding-top: 2px; }
-  .exp-role { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
-  .exp-company { font-size: 13px; color: var(--accent); margin-bottom: 8px; }
-  .exp-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
-
-  /* CONTACT */
-  .contact-inner {
-    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;
-  }
-  .contact-heading { font-size: clamp(28px, 4vw, 44px); font-weight: 500; letter-spacing: -0.02em; max-width: 400px; line-height: 1.15; }
-  .contact-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-  .contact-link { font-size: 14px; color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
-  .contact-link:hover { color: var(--text); }
-
-  /* FOOTER */
-  footer {
-    padding: 1.5rem 2.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    max-width: 1100px; margin: 0 auto;
-  }
-  .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--text-tertiary); }
-
-  /* RESPONSIVE */
-  @media (max-width: 700px) {
-    nav { padding: 1rem 1.25rem; }
-    .nav-links { gap: 1rem; }
-    section, .hero, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 4px; }
-    .contact-inner { flex-direction: column; align-items: flex-start; }
-    .contact-links { align-items: flex-start; }
-  }
-</style>
 </head>
 <body>
 
@@ -228,18 +14,25 @@
   <a class="nav-logo" href="#">// portfolio.dev</a>
   <div class="nav-links">
     <a href="#sobre">sobre</a>
-    <a href="#projetos">projetos</a>
-    <a href="#experiencia">experiência</a>
     <a href="#contato">contato</a>
   </div>
 </nav>
 
-<div class="hero" id="hero">
-  <p class="hero-eyebrow">Desenvolvedor de Software</p>
-  <h1 class="hero-name">Seu Nome<br><span>aqui.</span></h1>
-  <p class="hero-desc">Construo produtos digitais com foco em desempenho, clareza de código e experiência do usuário. Especializado em desenvolvimento full stack e sistemas escaláveis.</p>
+
+<div class="hero">
+  <p class="hero-eyebrow">Full Stack Developer · .NET</p>
+  <h1 class="hero-name">Luiz Augusto<span>.</span></h1>
+  <p class="hero-tagline">7 anos construindo aplicações corporativas robustas — de APIs .NET a interfaces Angular — para diferentes tipos de negócios.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">.NET / C#</span>
+    <span class="hero-badge">Angular</span>
+    <span class="hero-badge">Microserviços</span>
+    <span class="hero-badge">DDD</span>
+    <span class="hero-badge">Docker · Kubernetes</span>
+    <span class="hero-badge">AWS</span>
+  </div>
   <div class="hero-cta">
-    <a class="btn btn-primary" href="#projetos"><i class="ti ti-arrow-down"></i> Ver projetos</a>
+    <a class="btn btn-primary" href="#servicos"><i class="ti ti-briefcase"></i> Ver serviços</a>
     <a class="btn" href="#contato"><i class="ti ti-mail"></i> Fale comigo</a>
   </div>
 </div>
@@ -247,136 +40,123 @@
 <section id="sobre">
   <p class="section-label">01 — sobre</p>
   <div class="about-grid">
-    <div class="about-text">
-      <p>Desenvolvedor com foco em construir soluções que realmente fazem diferença. Gosto de entender o problema antes de escrever a primeira linha de código.</p>
-      <p>Tenho experiência com projetos que vão desde APIs de alto tráfego até interfaces interativas. Valorizo código limpo, documentação honesta e entregas que funcionam de verdade.</p>
-      <p>Fora do trabalho, contribuo com projetos open source e estou sempre aprendendo algo novo — ultimamente, sobre sistemas distribuídos e LLMs.</p>
-    </div>
-    <div class="stats">
-      <div class="stat-card">
-        <div class="stat-number">3+</div>
-        <div class="stat-label">Anos de experiência</div>
+    <div>
+      <div class="about-text">
+        <p>Sou desenvolvedor Full Stack com foco em .NET e Angular, atuando em projetos corporativos de média e grande escala. Gosto de entender o domínio do negócio antes de escrever a primeira linha — e isso aparece na qualidade das soluções que entrego.</p>
+        <p>Tenho vivência real em arquitetura de microsserviços, integração com sistemas de terceiros, definição técnica de soluções e aplicação de DDD, TDD e boas práticas de DevOps em times ágeis.</p>
+        <p>Sou graduado em Engenharia de Software e atualmente, curso pós-graduação em Arquitetura de Sistemas .NET na FIAP — aprofundando o lado de arquitetura que já pratico no dia a dia.</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">20+</div>
-        <div class="stat-label">Projetos entregues</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">8</div>
-        <div class="stat-label">Tecnologias principais</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Café por mês</div>
-      </div>
+     
     </div>
   </div>
 </section>
 
-<section id="habilidades">
-  <p class="section-label">02 — habilidades</p>
-  <div class="skills-grid">
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">TypeScript</span><span class="skill-level">avançado</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
-      <span class="skill-category">linguagem</span>
+<section id="servicos">
+  <p class="section-label">02 — serviços</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-api"></i></div>
+      <div class="service-name">APIs e back-end .NET</div>
+      <div class="service-desc">Desenvolvimento de APIs REST robustas e escaláveis com .NET/C#, aplicando DDD, SOLID e Clean Code. Do design ao deploy.</div>
+      <div class="service-tags"><span class="tag">.NET</span><span class="tag">C#</span><span class="tag">REST</span><span class="tag">Entity Framework</span></div>
     </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">React</span><span class="skill-level">avançado</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-      <span class="skill-category">front-end</span>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-layout-2"></i></div>
+      <div class="service-name">Front-end Angular</div>
+      <div class="service-desc">Interfaces corporativas modernas com Angular e TypeScript. Foco em desempenho, componentização e integração limpa com o back-end.</div>
+      <div class="service-tags"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">Vue.js</span><span class="tag">Blazor</span></div>
     </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">Node.js</span><span class="skill-level">avançado</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-      <span class="skill-category">back-end</span>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-topology-star-3"></i></div>
+      <div class="service-name">Arquitetura de sistemas</div>
+      <div class="service-desc">Definição de soluções técnicas, modelagem de domínio e migração de sistemas legados para arquiteturas modernas com microsserviços.</div>
+      <div class="service-tags"><span class="tag">Microserviços</span><span class="tag">DDD</span><span class="tag">Docker</span><span class="tag">Kubernetes</span></div>
     </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">Python</span><span class="skill-level">intermediário</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
-      <span class="skill-category">linguagem</span>
-    </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">PostgreSQL</span><span class="skill-level">intermediário</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
-      <span class="skill-category">banco de dados</span>
-    </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">Docker</span><span class="skill-level">intermediário</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div>
-      <span class="skill-category">infra</span>
-    </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">AWS</span><span class="skill-level">básico</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
-      <span class="skill-category">cloud</span>
-    </div>
-    <div class="skill-item">
-      <div class="skill-top"><span class="skill-name">GraphQL</span><span class="skill-level">básico</span></div>
-      <div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div>
-      <span class="skill-category">api</span>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-plug-connected"></i></div>
+      <div class="service-name">Integrações e APIs</div>
+      <div class="service-desc">Integração entre sistemas corporativos, instituições financeiras e plataformas externas via APIs REST e mensageria.</div>
+      <div class="service-tags"><span class="tag">AWS</span><span class="tag">CI/CD</span><span class="tag">Azure DevOps</span><span class="tag">Mensageria</span></div>
     </div>
   </div>
 </section>
 
-<section id="projetos">
-  <p class="section-label">03 — projetos</p>
-  <div class="projects-grid">
-    <a class="project-card" href="#">
-      <div class="project-header">
-        <div class="project-icon"><i class="ti ti-layout-dashboard"></i></div>
-        <span class="project-status">entregue</span>
+<section id="skills">
+  <p class="section-label">03 — competências</p>
+  <div class="skills-section">
+    <div>
+      <p class="skill-group-title">Back-end</p>
+      <div class="skills-chips">
+        <span class="skill-chip strong">.NET / C#</span>
+        <span class="skill-chip strong">APIs REST</span>
+        <span class="skill-chip strong">Entity Framework</span>
+        <span class="skill-chip strong">Node.js</span>
+        <span class="skill-chip strong">Python</span>
+        <span class="skill-chip strong">NHibernate</span>
       </div>
-      <div class="project-name">Dashboard de métricas</div>
-      <div class="project-desc">Painel em tempo real para monitoramento de KPIs de e-commerce. Suporta 50k+ eventos por dia com latência abaixo de 200ms.</div>
-      <div class="project-tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">WebSocket</span><span class="tag">Redis</span></div>
-    </a>
-    <a class="project-card" href="#">
-      <div class="project-header">
-        <div class="project-icon"><i class="ti ti-robot"></i></div>
-        <span class="project-status">em prod.</span>
+    </div>
+    <div>
+      <p class="skill-group-title">Front-end</p>
+      <div class="skills-chips">
+        <span class="skill-chip strong">Angular</span>
+        <span class="skill-chip strong">TypeScript</span>
+        <span class="skill-chip strong">JavaScript</span>
+        <span class="skill-chip strong">Vue.js</span>
+        <span class="skill-chip strong">Blazor</span>
+        
       </div>
-      <div class="project-name">API de automação</div>
-      <div class="project-desc">Serviço de automação de workflows com integração a APIs externas. Reduziu processos manuais em 80% para o cliente.</div>
-      <div class="project-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span></div>
-    </a>
-    <a class="project-card" href="#">
-      <div class="project-header">
-        <div class="project-icon"><i class="ti ti-brand-open-source"></i></div>
-        <span class="project-status">open source</span>
+    </div>
+    <div>
+      <p class="skill-group-title">Arquitetura &amp; qualidade</p>
+      <div class="skills-chips">
+        <span class="skill-chip strong">Microsserviços</span>
+        <span class="skill-chip strong">DDD</span>
+        <span class="skill-chip strong">SOLID</span>
+        <span class="skill-chip strong">TDD</span>
+        <span class="skill-chip strong">Clean Code</span>
+        <span class="skill-chip strong">Design Patterns</span>
+        <span class="skill-chip strong">Mensageria</span>
       </div>
-      <div class="project-name">CLI dev-tools</div>
-      <div class="project-desc">Conjunto de ferramentas de linha de comando para acelerar o setup de projetos. Mais de 300 estrelas no GitHub.</div>
-      <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">CLI</span><span class="tag">GitHub Actions</span></div>
-    </a>
+    </div>
+    <div>
+      <p class="skill-group-title">Banco de dados</p>
+      <div class="skills-chips">
+        <span class="skill-chip strong">SQL Server</span>
+        <span class="skill-chip strong">PostgreSQL</span>
+        <span class="skill-chip strong">Oracle</span>
+        <span class="skill-chip strong">MySQL</span>
+      </div>
+    </div>
+    <div>
+      <p class="skill-group-title">DevOps &amp; cloud</p>
+      <div class="skills-chips">
+        <span class="skill-chip strong">Docker</span>
+        <span class="skill-chip strong">Kubernetes</span>
+        <span class="skill-chip strong">Azure DevOps</span>
+        <span class="skill-chip strong">AWS (Cognito, S3)</span>
+        <span class="skill-chip strong">CI/CD</span>
+        <span class="skill-chip strong">Git</span>
+      </div>
+    </div>
   </div>
 </section>
-
-<section id="experiencia">
-  <p class="section-label">04 — experiência</p>
-  <div class="exp-list">
-    <div class="exp-item">
-      <div class="exp-period">2023 — atual</div>
+<section id="formacao">
+  <p class="section-label">05 — formação</p>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-icon"><i class="ti ti-school"></i></div>
       <div>
-        <div class="exp-role">Desenvolvedor Full Stack</div>
-        <div class="exp-company">Empresa atual</div>
-        <div class="exp-body">Desenvolvimento de features em um produto SaaS B2B, desde a modelagem de banco até a entrega de UI. Liderança técnica de um squad de 4 pessoas.</div>
+        <div class="edu-degree">Pós-graduação em Arquitetura de Sistemas .NET</div>
+        <div class="edu-school">FIAP</div>
+        <div class="edu-year">conclusão prevista: 2027</div>
       </div>
     </div>
-    <div class="exp-item">
-      <div class="exp-period">2022 — 2023</div>
+    <div class="edu-item">
+      <div class="edu-icon"><i class="ti ti-certificate"></i></div>
       <div>
-        <div class="exp-role">Desenvolvedor Back-end</div>
-        <div class="exp-company">Empresa anterior</div>
-        <div class="exp-body">Construção de APIs RESTful para sistema de pagamentos. Otimização de queries que reduziu tempo de resposta em 60%.</div>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-period">2021 — 2022</div>
-      <div>
-        <div class="exp-role">Estagiário de Desenvolvimento</div>
-        <div class="exp-company">Primeira empresa</div>
-        <div class="exp-body">Suporte a squads de produto, desenvolvimento de componentes front-end e integração com APIs de terceiros.</div>
+        <div class="edu-degree">Engenharia de Software</div>
+        <div class="edu-school">Ampli</div>
+        <div class="edu-year">graduação</div>
       </div>
     </div>
   </div>
@@ -384,18 +164,18 @@
 
 <section id="contato">
   <div class="contact-inner">
-    <h2 class="contact-heading">Vamos trabalhar juntos?</h2>
+    <h2 class="contact-heading">Vamos construir algo <span>juntos?</span></h2>
     <div class="contact-links">
-      <a class="contact-link" href="mailto:seuemail@exemplo.com"><i class="ti ti-mail"></i> seuemail@exemplo.com</a>
-      <a class="contact-link" href="https://github.com/seunome" target="_blank"><i class="ti ti-brand-github"></i> github.com/seunome</a>
-      <a class="contact-link" href="https://linkedin.com/in/seunome" target="_blank"><i class="ti ti-brand-linkedin"></i> linkedin.com/in/seunome</a>
+      <a class="contact-link" href="mailto:lajuniorferreira@gmail.com"><i class="ti ti-mail"></i> lajuniorferreira@gmail.com</a>
+      <a class="contact-link" href="https://github.com/lajuniorfe" target="_blank"><i class="ti ti-brand-github"></i> lajuniorfe</a>
+      <a class="contact-link" href="https://linkedin.com/in/luizfjunior" target="_blank"><i class="ti ti-brand-linkedin"></i> luizfjunior</a>
     </div>
   </div>
 </section>
 
 <footer>
   <span class="footer-copy">© 2026 — feito com atenção aos detalhes</span>
-  <span class="footer-copy">Niterói, RJ · Brasil</span>
+  <span class="footer-copy">RJ · Brasil</span>
 </footer>
 
 </body>
